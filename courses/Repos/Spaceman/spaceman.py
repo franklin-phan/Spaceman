@@ -1,5 +1,4 @@
 import random
-
     
 def load_word():
     f = open('words.txt', 'r')
@@ -16,7 +15,7 @@ def is_word_guessed(secret_word, letters_guessed):
             counter += 1
             if counter == len(secret_word):
               return True
-        return False
+    return False
 def get_guessed_word(secret_word, letters_guessed):
     display = ""
     for i in secret_word:
@@ -196,7 +195,7 @@ r"""\
     
     #TODO: check if the game has been won or lost
   if is_word_guessed(secret_word, letters_guessed):
-        print('Spacetacular Job! The spaceman lives another day! You correctly guessed the word '+ secret_word)
+        print('Spacetacular Job! The spaceman lives another day! You correctly guessed the word '+ secret_word +'.')
         response = input("\nWould you like to save another spaceman? ")
         if response in ("yes", "y"):
             next_game = True
