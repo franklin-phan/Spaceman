@@ -1,6 +1,6 @@
 import random
     
-def load_word():
+def load_word(): #gets word and loads word
     f = open('words.txt', 'r')
     words_list = f.readlines()
     f.close()
@@ -13,7 +13,7 @@ def is_word_guessed(secret_word, letters_guessed):
     for i in secret_word:
         if i in letters_guessed:
             counter += 1
-            if counter == len(secret_word):
+            if counter == len(secret_word): #when all the letters are guesses, the word is guessed.
               return True
     return False
 def get_guessed_word(secret_word, letters_guessed):
@@ -22,18 +22,19 @@ def get_guessed_word(secret_word, letters_guessed):
         if i in letters_guessed:
             display +=i
         else:
-            display += "-"
+            display += "-"#replaces all the letters in the word with dashes
     return display
 def is_guess_in_word(guess, secret_word):
-    return guess in secret_word
+    return guess in secret_word #checks if guess is in present in word
 
 def spaceman(secret_word):
-  next_game = True
+  next_game = True #playback loop
   attempts = 7
   letters_guessed = []
   print(f"Welcome to Spaceman! You have 7 chances to guess the secret word!")
   print (get_guessed_word(secret_word,letters_guessed))
-
+#while the game is being played and the word is not guessed yet
+#you have to put in an attempt for the game to start
   while next_game and is_word_guessed(secret_word, letters_guessed) == False and attempts>0:
     #ASCII Astronaut from https://www.asciiart.eu/space/astronauts
   
@@ -187,7 +188,7 @@ r"""
           print("You already guessed that letter.")
         else:
           letters_guessed.append(guess)
-          print(SPACEMAN[7-attempts])
+          print(SPACEMAN[7-attempts])#prints current ascii when guess is incorrect
           attempts-= 1
           print ('That letter is not in the secret word. ' + get_guessed_word(secret_word, letters_guessed))
            #This line tells you how many guesses you have left after each incorrect guess.
@@ -197,11 +198,11 @@ r"""
   if is_word_guessed(secret_word, letters_guessed):
         print('Spacetacular Job! The spaceman lives another day! You correctly guessed the word '+ secret_word +'.')
         response = input("\nWould you like to save another spaceman? ")
-        if response in ("yes", "y"):
+        if response in ("yes", "y"): #player wants to continue the game
             next_game = True
             spaceman(load_word())
         else:
-            next_game = False
+            next_game = False#player does not want to continue the game
             print("Thanks for playing! See you space cowboy.")
   else:
         print('The spaceman dies because you couldn\'t guess the word '+ secret_word +'. You\'re going to carry that weight.')
