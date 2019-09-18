@@ -1,0 +1,12 @@
+/p>
+Hello there, {{ name }}!
+{% if show_compliments %}
+    You are so:
+    <ul>
+        {% for compliment in compliments %}
+            <li>{{ compliment }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    Have a nice day!
+{% endif %}
