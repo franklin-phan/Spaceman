@@ -28,19 +28,25 @@ def is_guess_in_word(guess, secret_word):
     return guess in secret_word #checks if guess is in present in word
 #defining test functions
 def test_is_guess_in_word():
-  assert is_guess_in_word("a","aarvark") is True,"Letter is not in aarvark."
-  assert is_guess_in_word("b","aarvark") is False,"Letter is not in aarvark."
+  assert is_guess_in_word("a","aarvark") == True,"Letter is not in aarvark."
+  assert is_guess_in_word("b","aarvark") == False,"Letter is in aarvark."
+  assert is_guess_in_word("c","aarvark") == False,"Letter is in aarvark."
 
-'''
 def test_is_word_guessed():
-  assert is_word_guessed("potato","t") is True,"Potato is guessed"
+  assert is_word_guessed("potato","ptat") == False,"Potato is guessed"
+  assert is_word_guessed("potato","potato") == True,"Potato is not guessed"
+
 
 def test_get_guessed_word():
-  assert get_guessed_word("spaghetti","s") is True,"dashes are in place"
-'''
+  assert get_guessed_word("spaghetti",['s','p']) == "sp-------"
+  assert get_guessed_word("spaghetti",['z']) == "---------"
+  assert get_guessed_word("spaghetti",['s','p','a','g','h','e','t','t','i']) == "spaghetti"
+
+
 #calling test functions
 test_is_guess_in_word()
-
+test_is_word_guessed()
+test_get_guessed_word()
 def spaceman(secret_word):
   next_game = True #playback loop
   attempts = 7
@@ -235,4 +241,4 @@ r"""
 
 #These function calls that will start the game
 secret_word = load_word()
-spaceman(load_word())
+#spaceman(load_word())
