@@ -26,6 +26,20 @@ def get_guessed_word(secret_word, letters_guessed):
     return display
 def is_guess_in_word(guess, secret_word):
     return guess in secret_word #checks if guess is in present in word
+#defining test functions
+def test_is_guess_in_word():
+  assert is_guess_in_word("a","aarvark") is True,"Letter is not in aarvark."
+  assert is_guess_in_word("b","aarvark") is False,"Letter is not in aarvark."
+
+'''
+def test_is_word_guessed():
+  assert is_word_guessed("potato","t") is True,"Potato is guessed"
+
+def test_get_guessed_word():
+  assert get_guessed_word("spaghetti","s") is True,"dashes are in place"
+'''
+#calling test functions
+test_is_guess_in_word()
 
 def spaceman(secret_word):
   next_game = True #playback loop
@@ -38,6 +52,8 @@ def spaceman(secret_word):
   while next_game and is_word_guessed(secret_word, letters_guessed) == False and attempts>0:
     #ASCII Astronaut from https://www.asciiart.eu/space/astronauts
   
+
+
     SPACEMAN = [
 r"""
          
@@ -213,6 +229,9 @@ r"""
         else:
             next_game = False
             print("Thanks for playing! See you space cowboy.")
+
+
+
 
 #These function calls that will start the game
 secret_word = load_word()
